@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="#">
+                    Multi Creaciones
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'app1:index' %}"> Inicio </a></li>
+                <li><a href="{% url 'app1:informacion' %}">Sobre Nosotros</a></li>
+                <li><a href="{% url 'app1:servicios' %}">Servicios</a></li>
+                <li><a href="{% url 'app1:galeria' %}">Galeria</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+    {% block contenido %} 
+    
+    {% endblock %}
+    <footer>
+        <p>&copy; Multi Creaciones. Estamos a tu servicio.</p>
+    </footer>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"> </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block contenido %} 
+{% load static %}
+<div style="display: flex;">
+    <div style="width: 30%; height: 505px; margin-top: 4px; background-color: rgb(195, 227, 238);">
+        <!-- Contenido del primer contenedor -->
+        <div style="flex: 1; display: flex; justify-content: center; align-items: center; margin-top: 10px;">
+            <img src="{% static 'img/logopagina.jpg' %}" alt="Ejemplo" style="height: 200px;">
+        </div>
+        <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
+            <div style="line-height: 0.5;">
+                <p>
+                     <img src="{% static 'img/facebook.png' %}" alt="Ejemplo" style="height: 50px; margin-top: 10px; margin-right: 40px;">
+                     <a href="https://www.facebook.com/share/mHrAPDAwG4VSHPNC/?mibextid=qi2Omg" target="_blank" style="margin-right: 30px;">ir a facebook</a>
+                </p>
+                <p>
+                    <img src="{% static 'img/eeuu.png' %}" alt="Ejemplo" style="height: 50px; margin-top: 10px; margin-right: 1px;">
+                    <img src="{% static 'img/llamada.png' %}" alt="Ejemplo" style="height: 20px; margin-top: 10px; margin-right: 10px;">
+                    <a href="" target="_blank" style="margin-right: 20px;">786-316-6387</a>
+                </p>
+                <p>
+                    
+                    <img src="{% static 'img/esp.png' %}" alt="Ejemplo" style="height: 50px; margin-top: 10px; margin-right: 1px;">
+                    <img src="{% static 'img/llamada.png' %}" alt="Ejemplo" style="height: 20px; margin-top: 10px; margin-right: 10px;">
+                    <a href="" target="_blank" style="margin-right: 20px;">786-217-7608</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div style="width: 70%; height: 505px; margin-top: 4px; background-color: rgb(195, 227, 238); margin-left: 5px;">
+        <!-- Contenido del segundo contenedor -->
+        <div style="flex: 1; display: flex; justify-content: center; align-items: center; margin-top: 10px;">
+            <img src="{% static 'img/indexabajo.jpg' %}" alt="Ejemplo" style="height: 485px; width: 920px;">
+        </div>
+    </div>
+</div>
+{% endblock %}    

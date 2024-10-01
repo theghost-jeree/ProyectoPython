@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería a Pantalla Completa</title>
+    
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" type="text/css"/>
+    <style>
+      /* Estilo para la galería */
+      .galeria {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1px;
+          justify-content: space-between;
+          
+      }
+
+      .galeria .imagen {
+          flex: 1 1 calc(12% - 5px);
+          box-sizing: border-box;
+          border: #627291;
+          border-style:solid;
+          border-width: 1px;
+      }
+
+      .galeria .imagen img {
+          width: 100%;
+          height: auto;
+          display: block;
+          cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+      }
+
+      /* Estilo para la imagen ampliada */
+      .overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.8);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          visibility: hidden; /* Oculto por defecto */
+          opacity: 0;
+          transition: visibility 0s, opacity 0.3s ease;
+      }
+
+      .overlay img {
+          max-width: 90%;
+          max-height: 90%;
+      }
+
+      .overlay.active {
+          visibility: visible;
+          opacity: 1;
+      }
+
+      .overlay .close-btn {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          font-size: 30px;
+          color: #fff;
+          cursor: pointer;
+      }
+  </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="#">Multi Creaciones</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'app1:index' %}"> Inicio </a></li>
+                <li><a href="{% url 'app1:informacion' %}">Sobre Nosotros</a></li>
+                <li><a href="{% url 'app1:servicios' %}">Servicios</a></li>
+                <li><a href="{% url 'app1:galeria' %}">Galería</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+    {% block contenido %} 
+    <section class="galeria">
+        <div class="imagen">
+            <img src="{% static 'img/galeria1.jpg' %}" alt="Imagen 1">
+        </div>
+        <div class="imagen">
+            <img src="{% static 'img/galeria2.jpg' %}" alt="Imagen 2">
+        </div>
+        <div class="imagen">
+            <img src="{% static 'img/galeria3.jpg' %}" alt="Imagen 3">
+        </div>
+        <div class="imagen">
+            <img src="{% static 'img/galeria4.jpg' %}" alt="Imagen 4">
+        </div>
+
+        <div class="imagen">
+          <img src="{% static 'img/galeria5.jpg' %}" alt="Imagen 5">
+      </div>
+      <div class="imagen">
+          <img src="{% static 'img/galeria6.jpg' %}" alt="Imagen 6">
+      </div>
+      <div class="imagen">
+          <img src="{% static 'img/galeria7.jpg' %}" alt="Imagen 7">
+      </div>
+      <div class="imagen">
+          <img src="{% static 'img/galeria8.jpg' %}" alt="Imagen 8">
+      </div>
+
+      <div class="imagen">
+        <img src="{% static 'img/galeria9.jpg' %}" alt="Imagen 9">
+    </div>
+    <div class="imagen">
+        <img src="{% static 'img/galeria10.jpg' %}" alt="Imagen 10">
+    </div>
+    <div class="imagen">
+        <img src="{% static 'img/galeria11.jpg' %}" alt="Imagen 11">
+    </div>
+    <div class="imagen">
+        <img src="{% static 'img/galeria12.jpg' %}" alt="Imagen 12">
+    </div>
+
+    <div class="imagen">
+        <img src="{% static 'img/galeria13.jpg' %}" alt="Imagen 13">
+    </div>
+    <div class="imagen">
+        <img src="{% static 'img/galeria14.jpg' %}" alt="Imagen 14">
+    </div>
+    <div class="imagen">
+        <img src="{% static 'img/galeria15.jpg' %}" alt="Imagen 15">
+    </div>
+    <div class="imagen">
+        <img src="{% static 'img/galeria16.jpg' %}" alt="Imagen 16">
+    </div>
+        <!-- Añadir más imágenes según sea necesario -->
+    </section>
+
+    <!-- Contenedor para la imagen ampliada -->
+    <div class="overlay" id="overlay">
+        <span class="close-btn" id="closeBtn">&times;</span>
+        <img id="overlayImage" src="#" alt="Imagen Ampliada">
+    </div>
+    {% endblock %}
+    <footer>
+        <p>&copy; Multi Creaciones. Estamos a tu servicio.</p>
+    </footer>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+
+    <script>
+          // JavaScript para manejar la ampliación de la imagen
+        document.querySelectorAll('.galeria .imagen img').forEach(image => {
+            image.addEventListener('click', function() {
+                const overlay = document.getElementById('overlay');
+                const overlayImage = document.getElementById('overlayImage');
+                overlayImage.src = this.src; // Asigna la imagen clickeada a la imagen del overlay
+                overlay.classList.add('active'); // Muestra el overlay
+            });
+        });
+
+        // Cerrar el overlay al hacer clic en la X o fuera de la imagen
+        document.getElementById('closeBtn').addEventListener('click', function() {
+            document.getElementById('overlay').classList.remove('active');
+        });
+
+        document.getElementById('overlay').addEventListener('click', function(e) {
+            if (e.target !== document.getElementById('overlayImage')) {
+                this.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
